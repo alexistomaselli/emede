@@ -1,0 +1,7 @@
+vendor/
+venv/
+.DS_Store
+*.sqlite
+uploads/
+.idea/
+.vscode/
