@@ -24,7 +24,8 @@ $db->exec("CREATE TABLE IF NOT EXISTS pages (
     slug TEXT UNIQUE,
     title TEXT,
     template TEXT,
-    content TEXT
+    content TEXT,
+    in_menu INTEGER DEFAULT 1
 )");
 echo "Table 'pages' created.<br>";
 
@@ -57,7 +58,7 @@ $about_content = json_encode([
     'mission_text' => 'Todos nuestros procesos de fabricación se desarrollan bajo Sistema de Gestión de Calidad certificado por la norma ISO 9001:2015.',
     'image_url' => 'extracted_assets/image_p2_0.png'
 ]);
-$db->prepare("INSERT INTO pages (slug, title, template, content) VALUES (?, ?, ?, ?)")
+$db->prepare("INSERT INTO pages (slug, title, template, content, in_menu) VALUES (?, ?, ?, ?, 1)")
     ->execute(['trayectoria', 'Trayectoria', 'about', $about_content]);
 
 // 2. Packaging (Services Template)
@@ -78,7 +79,7 @@ $services_content = json_encode([
     'extra_title_2' => 'Análisis Estructural',
     'extra_text_2' => 'Nuestro Departamento de Preprensa analiza la viabilidad estructural.'
 ]);
-$db->prepare("INSERT INTO pages (slug, title, template, content) VALUES (?, ?, ?, ?)")
+$db->prepare("INSERT INTO pages (slug, title, template, content, in_menu) VALUES (?, ?, ?, ?, 1)")
     ->execute(['packaging', 'Packaging', 'services', $services_content]);
 
 // 3. Posavasos (Services Template - Reused)
@@ -96,7 +97,7 @@ $posavasos_content = json_encode([
     'extra_title_2' => '',
     'extra_text_2' => ''
 ]);
-$db->prepare("INSERT INTO pages (slug, title, template, content) VALUES (?, ?, ?, ?)")
+$db->prepare("INSERT INTO pages (slug, title, template, content, in_menu) VALUES (?, ?, ?, ?, 1)")
     ->execute(['posavasos', 'Posavasos', 'services', $posavasos_content]);
 
 // 4. Comercial (Services Template - Reused)
@@ -114,7 +115,7 @@ $comercial_content = json_encode([
     'extra_title_2' => '',
     'extra_text_2' => ''
 ]);
-$db->prepare("INSERT INTO pages (slug, title, template, content) VALUES (?, ?, ?, ?)")
+$db->prepare("INSERT INTO pages (slug, title, template, content, in_menu) VALUES (?, ?, ?, ?, 1)")
     ->execute(['comercial', 'Comercial', 'services', $comercial_content]);
 
 // 5. Galeria (Gallery Template)
@@ -129,7 +130,7 @@ $gallery_content = json_encode([
         'extracted_assets/image_p9_1.png'
     ]
 ]);
-$db->prepare("INSERT INTO pages (slug, title, template, content) VALUES (?, ?, ?, ?)")
+$db->prepare("INSERT INTO pages (slug, title, template, content, in_menu) VALUES (?, ?, ?, ?, 1)")
     ->execute(['galeria', 'Galería', 'gallery', $gallery_content]);
 
 
